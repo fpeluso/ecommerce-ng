@@ -61,7 +61,7 @@ export class MagazzinoComponent implements OnInit {
   }
 
   confirm(): void {
-    this.api.updateProduct(this.prodotto.id['$oid'], { nome: this.prodotto.nome, descrizione: this.prodotto.descrizione, prezzo: this.prodotto.prezzo, quantita: this.prodotto.quantita }).subscribe(data => {
+    this.api.updateProduct(this.prodotto.id, { nome: this.prodotto.nome, descrizione: this.prodotto.descrizione, prezzo: this.prodotto.prezzo, quantita: this.prodotto.quantita }).subscribe(data => {
       this.prodotto = new ProdottoImpl();
       this.editState = false;
       this.updateList();
