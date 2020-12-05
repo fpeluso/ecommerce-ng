@@ -1,0 +1,51 @@
+<form>
+    <div class="form-group">
+        <label for="nome">Nome Prodotto:</label>
+        <input type="text" class="form-control" placeholder="Nome Prodotto" [(ngModel)]="prodotto.nome" name="nome"
+            id="nome" required>
+    </div>
+    <div class="form-group">
+        <label for="descrizione">Descrizione:</label>
+        <input type="text" class="form-control" placeholder="Descrizione" [(ngModel)]="prodotto.descrizione"
+            name="descrizione" id="descrizione" required>
+    </div>
+    <div class="form-group">
+        <label for="prezzo">Prezzo:</label>
+        <input type="number" class="form-control" placeholder="Prezzo" [(ngModel)]="prodotto.prezzo" name="prezzo"
+            id="prezzo" required>
+    </div>
+    <div class="form-group">
+        <label for="quantita">Quantit&agrave;:</label>
+        <input type="number" class="form-control" placeholder="Quantit&agrave;" [(ngModel)]="prodotto.quantita"
+            name="quantita" id="quantita" required>
+    </div>
+    <button (click)="addProduct()" *ngIf="!editState" class="btn btn-primary">Aggiungi prodotto</button>
+    <button (click)="confirm()" *ngIf="editState" class="btn btn-primary" style="margin-right: 5px;">Conferma</button>
+    <button (click)="cancel()" *ngIf="editState" class="btn btn-primary">Annulla</button>
+</form>
+
+
+<table class="table table-hover" style="margin-top: 30px;">
+    <thead>
+        <tr>
+            <th>Nome Prodotto</th>
+            <th>Descrizione</th>
+            <th>Prezzo</th>
+            <th>Quantit&agrave;</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of prodotti; index as i">
+            <td>{{p.nome}}</td>
+            <td>{{p.descrizione}}</td>
+            <td>{{p.prezzo}}&euro;</td>
+            <td>{{p.quantita}}</td>
+            <td>
+                <button (click)="delProduct(i)" *ngIf="!editState" class="btn btn-primary">Elimina</button>
+            </td>
+            <td><button (click)="edit(i)" *ngIf="!editState" class="btn btn-primary">Modifica</button></td>
+        </tr>
+    </tbody>
+</table>

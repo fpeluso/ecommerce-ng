@@ -1,0 +1,31 @@
+<table class="table table-hover" style="margin-top: 30px;">
+    <thead>
+        <tr>
+            <th>Nome Prodotto</th>
+            <th>Descrizione</th>
+            <th>Prezzo unitario</th>
+            <th>Quantit&agrave;</th>
+            <th>Prezzo totale</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of cart; index as i">
+            <td>{{c.item.nome}}</td>
+            <td>{{c.item.descrizione}}</td>
+            <td>{{c.item.prezzo}}&euro;</td>
+            <td *ngIf="!c.isQuantityEdit">{{c.quantity}}</td>
+            <td *ngIf="c.isQuantityEdit"><input class="form-control-sm" type="number" [(ngModel)]="modifyQuantity"></td>
+            <td>{{c.item.prezzo*c.quantity}}&euro;</td>
+            <td>
+                <button (click)="delProduct(i)" *ngIf="!c.isQuantityEdit" class="btn btn-primary">Elimina</button>
+                <button (click)="cancelModify(i)" *ngIf="c.isQuantityEdit" class="btn btn-primary">Annulla</button>
+            </td>
+            <td>
+                <button (click)="edit(i)" *ngIf="!c.isQuantityEdit" class="btn btn-primary">Modifica</button>
+                <button (click)="confirmModify(i)" *ngIf="c.isQuantityEdit" class="btn btn-primary">Conferma</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

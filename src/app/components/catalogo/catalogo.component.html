@@ -1,0 +1,88 @@
+<div class="row">
+    <div class="col-xl">
+        <form>
+            <div class="form-group">
+                <label for="nome">Nome Prodotto:</label>
+                <!-- <input [(ngModel)]="searchName" (ngModelChange)="search()" type="text" class="form-control"
+                    placeholder="Nome Prodotto" name="nome" id="nome" required> -->
+                <input [(ngModel)]="searchName" (input)="search()" type="text" class="form-control"
+                    placeholder="Nome Prodotto" name="nome" id="nome" required>
+                <button (click)="search()" class="btn btn-primary">Cerca</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- <app-search></app-search> -->
+<div class="row">
+    <div class="col-xl-6">
+        <h2>Catalogo</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Descrizione</th>
+                    <th>Prezzo</th>
+                    <th>Quantit&agrave;</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of prodottiMostrati; index as i">
+                    <td>{{p.nome}}</td>
+                    <td>{{p.descrizione}}</td>
+                    <td>{{p.prezzo}}&euro;</td>
+                    <td>
+                        <input class="form-control-sm" type="number" [(ngModel)]="p.quantity" required>
+                    </td>
+                    <td>
+                        <button (click)="addProductToCart(i)" class="btn-sm btn-primary">+</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-xl-6">
+        <h2>Carrello</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Prezzo</th>
+                    <th>Quantit&agrave;</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let c of cartItems; index as j">
+                    <td>{{c.item.nome}}</td>
+                    <td>{{c.item.prezzo}}&euro;</td>
+                    <td *ngIf="!c.isQuantityEdit">
+                        {{c.quantity}}
+                    </td>
+                    <td *ngIf="c.isQuantityEdit"><input class="form-control-sm" type="number"
+                            [(ngModel)]="modifyQuantity"></td>
+                    <td *ngIf="c.isQuantityEdit">
+                        <button (click)="cancelModify(j)" class="btn-sm btn-primary">Annulla</button>
+                    </td>
+                    <td *ngIf="c.isQuantityEdit">
+                        <button (click)="confirmModify(j)" class="btn-sm btn-primary">Conferma</button>
+                    </td>
+                    <td *ngIf="!c.isQuantityEdit">
+                        <button (click)="removeProductFromCart(j)" class="btn-sm btn-primary">Rimuovi</button>
+                    </td>
+                    <td *ngIf="!c.isQuantityEdit">
+                        <button (click)="editProductInCart(j)" class="btn-sm btn-primary">Modifica</button>
+                    </td>
+                </tr>
+                <tr *ngIf="cartItems.length>0">
+                    <td>Totale:</td>
+                    <td>{{getTotaleCarrello()}}</td>
+                    <td></td>
+                    <td></td>
+                    <td><button (click)="pagamento()" class="btn-sm btn-primary">Pagamento</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
