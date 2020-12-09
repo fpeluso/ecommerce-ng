@@ -34,13 +34,12 @@ export class MagazzinoComponent implements OnInit {
   addProduct(): void {
     if (
       this.prodotto &&
-      this.prodotto.nome &&
-      this.prodotto.prezzo &&
-      this.prodotto.descrizione &&
-      this.prodotto.quantita
+      this.prodotto.name &&
+      this.prodotto.price &&
+      this.prodotto.description &&
+      this.prodotto.quantity
     ) {
       this.api.createProduct(this.prodotto).subscribe(data => {
-        console.log(JSON.stringify(data, null, 2))
         this.prodotto.id = data['$oid']
         this.prodotto = new ProdottoImpl();
         this.updateList();
@@ -61,7 +60,7 @@ export class MagazzinoComponent implements OnInit {
   }
 
   confirm(): void {
-    this.api.updateProduct(this.prodotto.id, { nome: this.prodotto.nome, descrizione: this.prodotto.descrizione, prezzo: this.prodotto.prezzo, quantita: this.prodotto.quantita }).subscribe(data => {
+    this.api.updateProduct(this.prodotto.id, { name: this.prodotto.name, description: this.prodotto.description, price: this.prodotto.price, quantity: this.prodotto.quantity }).subscribe(data => {
       this.prodotto = new ProdottoImpl();
       this.editState = false;
       this.updateList();

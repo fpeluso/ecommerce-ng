@@ -40,11 +40,10 @@ export class CatalogoComponent implements OnInit {
 
   search() {
     if (this.searchName) {
-      console.log(this.searchName);
       let lower = this.searchName.toLowerCase();
       this.prodottiMostrati = [];
       this.prodotti.forEach(p => {
-        if (p.nome.toLowerCase().indexOf(lower) >= 0) {
+        if (p.name.toLowerCase().indexOf(lower) >= 0) {
           this.prodottiMostrati.push(p);
         }
       })
@@ -96,7 +95,7 @@ export class CatalogoComponent implements OnInit {
   getTotaleCarrello(): number {
     let tot: number = 0;
     this.cartItems.forEach(c => {
-      tot += (c.item.prezzo * c.quantity);
+      tot += (c.item.price * c.quantity);
     })
     return tot;
   }

@@ -18,7 +18,6 @@ export class ScontrinoComponent implements OnInit {
 
   ngOnInit(): void {
     this.cart = this.cartService.getCart();
-    console.log(this.cart)
   }
 
   delProduct(i: number) {

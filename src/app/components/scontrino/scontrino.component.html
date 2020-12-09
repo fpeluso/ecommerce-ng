@@ -12,12 +12,12 @@
     </thead>
     <tbody>
         <tr *ngFor="let c of cart; index as i">
-            <td>{{c.item.nome}}</td>
-            <td>{{c.item.descrizione}}</td>
-            <td>{{c.item.prezzo}}&euro;</td>
+            <td>{{c.item.name}}</td>
+            <td>{{c.item.description}}</td>
+            <td>{{c.item.price}}&euro;</td>
             <td *ngIf="!c.isQuantityEdit">{{c.quantity}}</td>
             <td *ngIf="c.isQuantityEdit"><input class="form-control-sm" type="number" [(ngModel)]="modifyQuantity"></td>
-            <td>{{c.item.prezzo*c.quantity}}&euro;</td>
+            <td>{{c.item.price*c.quantity}}&euro;</td>
             <td>
                 <button (click)="delProduct(i)" *ngIf="!c.isQuantityEdit" class="btn btn-primary">Elimina</button>
                 <button (click)="cancelModify(i)" *ngIf="c.isQuantityEdit" class="btn btn-primary">Annulla</button>

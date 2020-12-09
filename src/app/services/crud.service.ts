@@ -8,33 +8,34 @@ import { Injectable } from '@angular/core';
 export class CrudService {
 
   constructor(private httpClient: HttpClient) { }
+  endpoint = `http://localhost:8081/api/v1/products`;
 
   public getProductList() {
-    return this.httpClient.get(`http://localhost:8080/api/products`);
+    return this.httpClient.get(this.endpoint);
   }
 
   public getProduct(id: string) {
-    return this.httpClient.get(`http://localhost:8080/api/products/${id}`);
+    return this.httpClient.get(`${this.endpoint}/${id}`);
   }
 
   public createProduct(data: Prodotto) {
-    return this.httpClient.post(`http://localhost:8080/api/products`, data);
+    return this.httpClient.post(this.endpoint, data);
   }
 
   public updateProduct(
     id: string,
     data: {
-      nome?: string;
-      descrizione?: string;
-      prezzo?: number;
-      quantita?: number;
+      name?: string;
+      description?: string;
+      price?: number;
+      quantity?: number;
     }
   ) {
-    return this.httpClient.put(`http://localhost:8080/api/products/${id}`, data);
+    return this.httpClient.put(`${this.endpoint}/${id}`, data);
   }
 
   public deleteProduct(id: string) {
-    return this.httpClient.delete(`http://localhost:8080/api/products/${id}`);
+    return this.httpClient.delete(`${this.endpoint}/${id}`);
   }
 
 }

@@ -28,9 +28,9 @@
             </thead>
             <tbody>
                 <tr *ngFor="let p of prodottiMostrati; index as i">
-                    <td>{{p.nome}}</td>
-                    <td>{{p.descrizione}}</td>
-                    <td>{{p.prezzo}}&euro;</td>
+                    <td>{{p.name}}</td>
+                    <td>{{p.description}}</td>
+                    <td>{{p.price}}&euro;</td>
                     <td>
                         <input class="form-control-sm" type="number" [(ngModel)]="p.quantity" required>
                     </td>
@@ -55,8 +55,8 @@
             </thead>
             <tbody>
                 <tr *ngFor="let c of cartItems; index as j">
-                    <td>{{c.item.nome}}</td>
-                    <td>{{c.item.prezzo}}&euro;</td>
+                    <td>{{c.item.name}}</td>
+                    <td>{{c.item.price}}&euro;</td>
                     <td *ngIf="!c.isQuantityEdit">
                         {{c.quantity}}
                     </td>

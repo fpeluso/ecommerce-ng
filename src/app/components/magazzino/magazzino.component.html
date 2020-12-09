@@ -1,22 +1,22 @@
 <form>
     <div class="form-group">
         <label for="nome">Nome Prodotto:</label>
-        <input type="text" class="form-control" placeholder="Nome Prodotto" [(ngModel)]="prodotto.nome" name="nome"
+        <input type="text" class="form-control" placeholder="Nome Prodotto" [(ngModel)]="prodotto.name" name="nome"
             id="nome" required>
     </div>
     <div class="form-group">
         <label for="descrizione">Descrizione:</label>
-        <input type="text" class="form-control" placeholder="Descrizione" [(ngModel)]="prodotto.descrizione"
+        <input type="text" class="form-control" placeholder="Descrizione" [(ngModel)]="prodotto.description"
             name="descrizione" id="descrizione" required>
     </div>
     <div class="form-group">
         <label for="prezzo">Prezzo:</label>
-        <input type="number" class="form-control" placeholder="Prezzo" [(ngModel)]="prodotto.prezzo" name="prezzo"
+        <input type="number" class="form-control" placeholder="Prezzo" [(ngModel)]="prodotto.price" name="prezzo"
             id="prezzo" required>
     </div>
     <div class="form-group">
         <label for="quantita">Quantit&agrave;:</label>
-        <input type="number" class="form-control" placeholder="Quantit&agrave;" [(ngModel)]="prodotto.quantita"
+        <input type="number" class="form-control" placeholder="Quantit&agrave;" [(ngModel)]="prodotto.quantity"
             name="quantita" id="quantita" required>
     </div>
     <button (click)="addProduct()" *ngIf="!editState" class="btn btn-primary">Aggiungi prodotto</button>
@@ -38,10 +38,10 @@
     </thead>
     <tbody>
         <tr *ngFor="let p of prodotti; index as i">
-            <td>{{p.nome}}</td>
-            <td>{{p.descrizione}}</td>
-            <td>{{p.prezzo}}&euro;</td>
-            <td>{{p.quantita}}</td>
+            <td>{{p.name}}</td>
+            <td>{{p.description}}</td>
+            <td>{{p.price}}&euro;</td>
+            <td>{{p.quantity}}</td>
             <td>
                 <button (click)="delProduct(i)" *ngIf="!editState" class="btn btn-primary">Elimina</button>
             </td>
