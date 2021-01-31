@@ -1,7 +1,7 @@
-import { SessionService } from './../../services/session.service';
-import { CrudService } from './../../services/crud.service';
-import { ItemsInCart } from './../../interfaces/itemsInCart';
-import { ProdottoImpl } from './../../models/prodottoImpl';
+import { SessionService } from '../../services/session.service';
+import { CrudService } from '../../services/crud.service';
+import { ItemsInCart } from '../../interfaces/itemsInCart';
+import { ProdottoImpl } from '../../models/prodottoImpl';
 import { Router } from '@angular/router';
 
 import { Component, OnInit } from '@angular/core';
