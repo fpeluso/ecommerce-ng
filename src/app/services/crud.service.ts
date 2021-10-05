@@ -1,6 +1,7 @@
 import { Prodotto } from '../interfaces/prodotto';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,8 @@ import { Injectable } from '@angular/core';
 export class CrudService {
 
   constructor(private httpClient: HttpClient) { }
-  endpoint = `http://localhost:8081/api/v1/products`;
+  // endpoint = `http://localhost:8081/api/v1/products`;
+  endpoint = `${environment.baseUrl}api/v1/products`;
 
   public getProductList() {
     return this.httpClient.get(this.endpoint);
